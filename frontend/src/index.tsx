@@ -1,12 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Login from "./component/login/login";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import Login from "./components/login/login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ListUser from "./components/list/list";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <BrowserRouter>
+      <Routes>
+        <Route path={"/"} element={<Login />} />
+        <Route path={"/list"} element={<ListUser />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -23,6 +23,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const onSubmit = (data: IFormInput) => {
+  http
+    .post<IFormInput>("/login", data)
+    .then((response: any) => {
+      console.log(response.data);
+    })
+    .catch((e: Error) => {
+      console.log(e);
+    });
+};
+
 const Login = () => {
   const {
     register,
@@ -31,17 +42,6 @@ const Login = () => {
   } = useForm<IFormInput>();
 
   const { heading, submitButton } = useStyles();
-
-  const onSubmit = (data: IFormInput) => {
-    http
-      .post<IFormInput>("/login", data)
-      .then((response: any) => {
-        console.log(response.data);
-      })
-      .catch((e: Error) => {
-        console.log(e);
-      });
-  };
 
   return (
     <Container maxWidth="xs">
@@ -66,9 +66,9 @@ const Login = () => {
           variant="outlined"
           margin="normal"
           label="Password"
-          helperText={errors.password?.message}
-          error={!!errors.password?.message}
           type="password"
+          helperText={errors.email?.message}
+          error={!!errors.email?.message}
           fullWidth
           required
         />

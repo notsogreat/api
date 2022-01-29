@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -16,21 +15,36 @@ type login struct {
 	Password string `json:"password"`
 }
 
+type user struct {
+	FirstName string `json:"firstname"`
+	LastName  string `json:"lastname"`
+}
+
 func loginHandler(c *gin.Context) {
 	// fmt.Println("helllloooo1")
 
 	var loginDetails login
 
-	// body, _ := ioutil.ReadAll(c.Request.Body)
-	// fmt.Println(string(body))
-	// fmt.Println("helllloooo")
-
 	if err := c.BindJSON(&loginDetails); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "bad data"})
 	}
-	fmt.Println("hello")
-	// fmt.Println(loginDetails.Email)
 	if loginDetails.Email == "ashish" && loginDetails.Password == "dental" {
 		c.JSON(200, gin.H{"message": "Login Success"})
 	}
+}
+
+func listUserHandler(c *gin.Context) {
+	// fmt.Println("helllloooo1")
+	var userDetails = []user{
+		{
+			FirstName: "Ashish",
+			LastName:  "Heda",
+		},
+		{
+			FirstName: "Abhishek",
+			LastName:  "Heda",
+		},
+	}
+
+	c.JSON(200, userDetails)
 }
