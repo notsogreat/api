@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import Login from "./components/login/login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ListUser from "./components/list/list";
+import User from "./components/user/user";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,6 +13,7 @@ ReactDOM.render(
       <Routes>
         <Route path={"/"} element={<Login />} />
         <Route path={"/list"} element={<ListUser />} />
+        <Route path={"/user"} element={<User />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

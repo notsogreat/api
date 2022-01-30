@@ -26,7 +26,6 @@ const ListUser: React.FC = () => {
     getUser();
   }, []);
 
-  console.log(users);
   return (
     <List
       dense

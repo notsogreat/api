@@ -23,6 +23,7 @@ func RunServer() {
 	r.GET("/hello", helloHandler)
 	r.POST("/login", loginHandler)
 	r.GET("/users", listUserHandler)
+	r.GET("/user/:email", userDetails)
 
 	r.Run()
 }
