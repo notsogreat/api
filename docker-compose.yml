@@ -1,13 +1,19 @@
 version: "3.8"
 
 services:
-  app:
+  backend:
     container_name: app-backend
-    image: app-dev
+    image: app-backend
     build:
       context: .
-      dockerfile: Dockerfile-backend
-    volumes:
-      - .:/app
+      dockerfile: Dockerfile.backend
     ports:
-      - 4000:4000
+      - 8080:8080
+  fronend:
+    container_name: app-frontend
+    image: app-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
